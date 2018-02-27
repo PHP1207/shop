@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="index.php?p=Admin&c=Category&a=edit" method="post">
+    <table>
+        <tr>
+            <td>分类名称:</td>
+            <td>
+                <input type="text" name="name" value="<?=$name?>">
+                <input type="hidden" name="id" value="<?=$id?>">
+            </td>
+        </tr>
+        <tr>
+            <td>分类详情:</td>
+            <td>
+                <textarea name="cenetn"><?=$cenetn?></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>是否显示:</td>
+            <td>
+               <input type="checkbox" name="is_show" value="1" <?=$is_show==0?'':'checked'?>>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="修改">
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

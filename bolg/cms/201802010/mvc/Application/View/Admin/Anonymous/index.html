@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>后台管理系统</title>
+    <?php require './Application/View/Admin/Admin/link.html'?>
+</head>
+<body>
+<header>
+    <h1>网站后台管理系统</h1>
+    <p>
+        <a href="#"><span class="icon home"></span>系统首页</a>
+        <a href="index.php?p=Admin&c=Login&a=logut"><span class="icon quit"></span>安全退出</a>
+    </p>
+</header>
+<section>
+    <?php require './Application/View/Admin/Admin/nae.html'?>
+    <div class="mainbox">
+        <table border="1px" cellspacing="0" cellpadding="0" width="650px" style="text-align: center">
+            <tr>
+                <th>评论ID</th>
+                <th>文章标题</th>
+                <th>评论人</th>
+                <th>评论内容</th>
+                <th>评论时间</th>
+                <th>操作</th>
+            </tr>
+            <?php foreach($rows as $row):?>
+            <tr>
+                <td><?=$row['com_id']?></td>
+                <td>
+                    <a href=""><?=$row['name']?></a>
+                </td>
+                <td><?=$row['nickname']?></td>
+                <td><?=$row['anony']?></td>
+                <td><?=date('Y-m-d H:i:s',$row['time'])?></td>
+                <td>
+                    <!--<a href="">修改</a>-->
+                    <a href="index.php?p=Admin&c=Anonymous&a=delete&id=<?=$row['com_id']?>">删除</a>
+                </td>
+            </tr>
+            <?php endforeach;?>
+            <tr></tr>
+        </table>
+
+    </div>
+</section>
+<script>
+    $(function(){
+        $('dt').click(function(){
+            var obj=$(this).next();
+            if($(this).next().css('display')=='block'){
+                obj.hide('fast');
+                $(this).removeClass('on');
+            }else{
+                obj.show('fast');
+                $(this).addClass('on');
+            }
+        });
+    });
+</script>
+</body>
+</html><SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

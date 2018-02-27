@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1px" cellspacing="0" cellpadding="0">
+    <tr>
+        <th>收藏ID</th>
+        <th>文章id</th>
+        <th>作者id</th>
+        <th>收藏时间</th>
+        <th>状态</th>
+        <th>操作</th>
+    </tr>
+    <?php foreach($rows as $v):?>
+    <tr>
+        <td><?=$v['id']?></td>
+        <td><?=$v['art_name']?></td>
+        <td><?=$v['ad_name']?></td>
+        <td><?=date('Y-m-d H:i:s',$v['time'])?></td>
+        <td><?=$v['status']==0?'正常':'删除'?></td>
+        <td>
+            <!--<a href="">修改</a>-->
+            <a href="index.php?p=Admin&c=Collection&a=delete&id=<?=$v['id']?>">删除</a>
+        </td>
+    </tr>
+    <?php endforeach;?>
+    <tr></tr>
+</table>
+</body>
+</html>

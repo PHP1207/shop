@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Black &amp; White</title>
+
+    <!-- meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- css -->
+    <link rel="stylesheet" href="./Public/Admin/Anonymous/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="./Public/Admin/Anonymous/css/pace.css">
+    <link rel="stylesheet" href="./Public/Admin/Anonymous/css/custom.css">
+
+    <!-- js -->
+    <script src="./Public/Admin/Anonymous/js/jquery-2.1.3.min.js"></script>
+    <script src="./Public/Admin/Anonymous/js/bootstrap.min.js"></script>
+    <script src="./Public/Admin/Anonymous/js/pace.min.js"></script>
+    <script src="./Public/Admin/Anonymous/js/modernizr.custom.js"></script>
+</head>
+
+<body id="single">
+<div class="content-body">
+    <div class="container">
+        <div class="row">
+            <main class="col-md-8">
+                <section class="comment-area" id="comment-area">
+                    <hr>
+                    <h3>回复评论</h3>
+                    <form action="index.php?p=Home&c=Reply&a=reply" method="post" class="comment-form">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="id_name">回复人：</label>
+                                <input type="text" id="id_name" name="people" required>
+                                <input type="hidden" name="id" value="<?=$row['id']?>" >
+                            </div>
+                            <div class="col-md-12">
+                                <label>回复内容：</label>
+                                <!-- 加载编辑器的容器 -->
+                                <script id="container" name="reply" type="text/plain">
+    </script>
+                                <!-- 配置文件 -->
+                                <script type="text/javascript" src="./Public/Admin/Ueditor/ueditor.config.js"></script>
+                                <!-- 编辑器源码文件 -->
+                                <script type="text/javascript" src="./Public/Admin/Ueditor/ueditor.all.js"></script>
+                                <!-- 实例化编辑器 -->
+                                <script type="text/javascript">
+                                    var ue = UE.getEditor('container');
+                                </script>
+                                <button type="submit" class="comment-btn">发表</button>
+                            </div>
+                        </div>    <!-- row -->
+                    </form>
+                </section>
+            </main>
+        </div>
+    </div>
+</div>
+<script src="./Public/Admin/Anonymous/js/script.js"></script>
+</body>
+</html>

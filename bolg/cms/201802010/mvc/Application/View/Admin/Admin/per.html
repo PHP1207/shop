@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        img{ border-radius:50%}
+    </style>
+</head>
+<body>
+<table>
+    <tr>
+        <td>
+            <ul>
+                <li>
+                    头像:
+                </li>
+                <li><img src="<?=$_SESSION['user']['logo']?>" alt=""></li>
+                <li>姓名:<?=$_SESSION['user']['username']?></li>
+                <li>昵称:<?=$_SESSION['user']['nickname']?></li>
+                <li>邮箱:<?=$_SESSION['user']['email']?></li>
+                <li><a href="index.php?p=Admin&c=Admin&a=edit_save">修改个人资料</a></li>
+                <li><a href="index.php?p=Admin&c=Login&a=logut">退出</a></li>
+            </ul>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>后台管理系统</title>
+		<?php require './Application/View/Admin/Admin/link.html'?>
+	</head>
+	<body>
+		<header>
+			<h1>网站后台管理系统</h1>
+			<p>
+				<a href="#"><span class="icon home"></span>系统首页</a>
+				<a href="index.php?p=Admin&c=Login&a=logut"><span class="icon quit"></span>安全退出</a>
+			</p>
+		</header>
+		<section>
+			<?php require './Application/View/Admin/Admin/nae.html'?>
+			<div class="mainbox">
+				<div class="note">
+					<h4>管理员</h4>
+					<form method="post" action="index.php?p=Admin&c=Admin&a=index" class="search_form">
+						用户名<input type="text" name="username">
+						邮箱<input type="text" name="email">
+						<select name="status">
+							<option value="">全部</option>
+							<option value="1">在线</option>
+							<option value="2">不在线</option>
+							<option value="4">隐身</option>
+						</select>
+						<input type="submit" name="搜素">
+					</form>
+					<table class="news_list" cellpadding="0" cellspacing="0">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>用户名</th>
+								<th>昵称</th>
+								<th>邮箱</th>
+								<th>头像</th>
+								<th>添加时间</th>
+								<th>修改时间</th>
+								<th>登录时间</th>
+								<th>登录ip</th>
+								<th>在线</th>
+								<th>不在线</th>
+								<th>隐身</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody>
+						<!--<?=$username?>-->
+						<?php foreach($list as $row):?>
+						<tr>
+							<td><?=$row['id']?></td>
+							<td><?=$row['username']?></td>
+							<td><?=$row['nickname']?></td>
+							<td><?=$row['email']?></td>
+							<td><img src="<?=$row['logo']?>" alt=""></td>
+							<td><?=date("Y-m-d H:i:s",$row['add_time'])?></td>
+							<td><?=date("Y-m-d H:i:s",$row['update_time'])?></td>
+							<td><?=date('Y-m-d H:i:s',$row['login_last_time'])?></td>
+							<td><?=long2ip($row['login_last_ip'])?></td>
+							<td><?=($row['status']&1)>0?'√':'x'?></td>
+							<td><?=($row['status']&2)>0?'√':'x'?></td>
+							<td><?=($row['status']&4)>0?'√':'x'?></td>
+							<td>
+								<a href="index.php?p=Admin&c=Admin&a=edit&id=<?=$row['id']?>">修改</a>
+								<a href="index.php?p=Admin&c=Admin&a=delete&id=<?=$row['id']?>">删除</a>
+							</td>
+						</tr>
+						<?php endforeach;?>
+
+						</tbody>
+					</table>
+					<div class="page">
+						<table id="page-table" cellspacing="0">
+							<tbody>
+							<tr>
+								<td align="right" nowrap="true" style="background-color: rgb(255, 255, 255);">
+									<!-- $Id: page.htm 14216 2008-03-10 02:27:21Z testyang $ -->
+									<div id="turn-page">
+										总计  <span id="totalRecords"><?=$count?></span>个记录分为 <span id="totalPages"><?=$totalPage?></span>页当前第 <span id="pageCurrent"><?=$page?></span>
+										页，每页 <input type="text" size="3" id="pageSize" value="<?=$pageSize?>" onkeypress="return listTable.changePageSize(event)">
+										<span id="page-link">
+                            <a href="index.php?<?=$url_name?>&page=1">第一页</a>
+                            <a href="index.php?<?=$url_name?>&page=<?=($page-1)<1?1:($page-1)?>">上一页</a>
+                            <a href="index.php?<?=$url_name?>&page=<?=($page+1)>$totalPage?$totalPage:($page+1)?>">下一页</a>
+                            <a href="index.php?<?=$url_name?>&page=<?=$totalPage?>">最末页</a>
+                            <select id="gotoPage" onchange="listTable.gotoPage(this.value)">
+                            <option value="1">1</option><option value="2">2</option>          </select>
+                        </span>
+									</div>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+			</div>
+		</section>
+		<script>
+			$(function(){
+				$('dt').click(function(){
+					var obj=$(this).next();
+					if($(this).next().css('display')=='block'){
+						obj.hide('fast');
+						$(this).removeClass('on');
+					}else{
+						obj.show('fast');
+						$(this).addClass('on');
+					}
+				});
+			});
+		</script>
+	</body>
+</html><SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>
